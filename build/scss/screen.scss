@@ -7,24 +7,12 @@
 @import "defaults/fonts";
 // Settings and mixins
 @import "defaults/variables";
-@import "defaults/helpers"; // Sass mixins for breakpoints as well as clearfix and hide-text mixins
 @import "defaults/mixins"; // Stylistic mixins (buttons, arrows etc)
 @import "defaults/base-elements";
 @import "defaults/alerts";
 @import "defaults/sharepoint";
 @import "defaults/grid";
 // Masterpage
-@import "elements/layout";
-@import "elements/fancybox";
 
-// Masterpage
-@import "elements/blogs-rollup";
-@import "elements/feature-banners";
-@import "elements/header-banner";
-@import "elements/link-tiles";
-@import "elements/news-slider";
-@import "elements/twitter";
-@import "elements/owl-carousel";
-@import "elements/nav";
 
 
