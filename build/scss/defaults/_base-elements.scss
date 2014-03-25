@@ -1,0 +1,56 @@
+
+html {
+	font-size: $rem-base;
+
+body, h1, h2, h3, h4, span, p, div {
+	font-family: $font-main;
+	@include font-size(13);
+}
+
+
+body {
+	color:$text;
+
+	h1, h2, h3, h4,{
+	font-weight:bold;
+	}
+
+
+		h1 {
+			@include font-size(26);
+			color:$accent;
+			margin-bottom:15px;
+			font-family:$header-font;
+
+		}
+
+		h2 {
+			@include font-size(18);
+			color:$sub-accent;
+			margin-bottom:5px;
+			font-family:$sub-header-font;
+		}
+
+		h3 {
+			@include font-size(16);
+			color:$sub-accent;
+			font-family:$sub-header-font;
+		}
+
+		h4 {
+			@include font-size(14);
+			color:$sub-accent;
+			font-family:$sub-header-font;
+		}
+
+		a {
+			text-decoration: none;
+			color: $links;
+
+			&:hover{
+				text-decoration:none;
+			}
+		}
+
+	}
+}

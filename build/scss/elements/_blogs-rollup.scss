@@ -1,0 +1,41 @@
+.blogs-rollup{
+	width:100%;
+
+	article{
+		width:100%;
+		clear:both;
+		@extend %clearfix;
+		margin-bottom: 15px;
+		img{
+			float:left;
+		}
+
+		h2{
+			font-family: $font-main;
+			@include font-size(14);
+		}
+
+
+	}
+
+	.button-container{
+		text-align: right;
+
+		a.btn{
+			padding:10px;
+			color:#fff;
+			background:$button;
+			display: block;
+			width:100%;
+			text-align: center;
+
+			&:hover{
+				background:lighten($button,20%);
+			}
+
+			@include respond-from($small-screen){
+			display: inline;
+			}
+		}
+	}
+}

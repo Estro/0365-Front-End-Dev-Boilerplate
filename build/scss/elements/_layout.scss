@@ -1,0 +1,86 @@
+// Main Masterpage and Layout
+
+html {
+	height:100%;
+
+	 header {
+	 	
+	 }
+
+	.app {
+
+		.app__content {
+			background:#fff;
+			padding:25px;
+			height:100%;
+
+			.content-block{
+				margin-top:10px;
+				margin-bottom:10px;
+			}
+
+			footer {
+				clear:both;
+				margin-bottom: 20px;
+
+				h3 {
+					font-family: Arial, sans-serif;
+					font-weight: bold;
+					@include font-size(14);
+					color: $text;
+				}
+
+				ul {
+					padding: 0;
+					li {
+						list-style-position: inside;
+						padding: 5px 0;
+					}
+				}
+
+				p {
+					padding: 15px 0;
+				}
+
+				button {
+					background-color: #FFF;
+					border: 1px solid #ababab;
+					@include font-size(12);
+					padding: 5px 10px;
+					color: $links;
+
+					&:hover, &:focus {
+						background-color: $accent;
+						color: #FFF;
+					}
+				}
+
+				// Upper footer (grey box, link columns, feedback block)
+				.footer-upper {
+					@extend %clearfix;
+					background-color: $light-gray;
+					padding: 20px;
+				}
+
+				// Lower footer (red band copyright and tagline)
+				.footer-lower {
+					@extend %clearfix;
+					background-color: $accent;
+					padding: 15px 10px 5px;
+
+					.copyright-section {
+						color: #FFF;
+						@include font-size(14);
+					}
+
+					.logo-section {
+						text-align: right;
+					}
+				}
+			}
+		}
+	
+	}
+}
+
+

@@ -1,0 +1,40 @@
+#s4-workspace{
+	width:100%;
+}
+
+		.edit-mode-panel {
+    		background-color: #FFF;
+    		width:100%!important;
+		}
+
+		input.ms-long {
+    		width: 400px!important;
+		}
+
+		input[type="button"], input[type="reset"], input[type="submit"], button {
+			min-width:0;
+		}
+
+		.ms-srch-sb-navLink {
+			@include respond-to($tiny-screen){
+							display: none;
+			}
+
+		}
+
+		.ms-webpart-zone {
+    		display: inherit;
+		}
+
+		.ms-fullWidth {
+    		-moz-box-sizing: border-box;
+   			width: auto;
+		}	
+
+		.ms-webpart-cell-vertical {
+    		display: inherit;
+		}
+
+		.ms-webpart-chrome-vertical {
+    		display: inherit;
+		}

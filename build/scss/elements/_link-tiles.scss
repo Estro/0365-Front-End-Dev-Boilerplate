@@ -1,0 +1,55 @@
+.link-tiles{
+
+	width:100%;
+
+	.tile{
+		height:150px;
+		position: relative;
+		width: 100%;
+		cursor: pointer;
+		overflow: hidden;
+
+		.tile__title{
+			width: 100%;
+			height: 50px;
+			position: absolute;
+			top:0;
+			left:0;
+			padding:5px;
+
+			&.chev-light-green{
+				background: url(../img/chev-light-green.png) no-repeat;
+			}
+
+			&.chev-green{
+				background: url(../img/chev-green.png) no-repeat;
+			}
+
+			&.chev-orange{
+				background: url(../img/chev-orange.png) no-repeat;
+			}
+
+			&.chev-light-purple{
+				background: url(../img/chev-light-purple.png) no-repeat;
+			}
+
+			&.chev-purple{
+				background: url(../img/chev-purple.png) no-repeat;
+			}
+
+			&.chev-red{
+				background: url(../img/chev-red.png) no-repeat;
+			}
+
+			h2{
+				color:#fff;
+				font-family: $header-font;
+				max-width:230px;
+			}
+			
+		}
+
+	}
+
+
+}

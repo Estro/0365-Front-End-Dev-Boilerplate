@@ -1,0 +1,68 @@
+
+ 
+$folder = 'Z:\Sites\Tesco-New\public' # Enter the root path you want to monitor. 
+$filter = '*.*'  # You can enter a wildcard filter here. 
+$domain = 'architect365.sharepoint.com'
+$siteCollection = 'teams/groupnews'
+$library = 'app'
+
+
+$webdav = '\\' + $domain + '@SSL\DavWWWRoot\' + $siteCollection.replace('/', '\')  + '\' + $library + '\'
+
+Function init (){
+Write-Host "Checking Folder Structure" -fore green
+robocopy $folder $webdav /e /xf *.*
+watch
+}
+
+Function pushto365 ([string] $filePath, [string] $newPath){
+    $newPath = $webdav + $newPath
+    Write-Host "Uploading '$newPath'" -fore green 
+	Copy-Item $filePath $newPath -recurse -force
+	Write-Host "The file $newPath was succesfully uploaded" -fore green
+}                       
+
+Function watch (){
+Write-Host "Starting Watch" -fore green
+
+$fsw = New-Object IO.FileSystemWatcher $folder, $filter -Property @{IncludeSubdirectories = $true;NotifyFilter = [IO.NotifyFilters]'FileName, LastWrite'} 
+
+Register-ObjectEvent $fsw Created -SourceIdentifier FileCreated -Action { 
+$name = $Event.SourceEventArgs.Name 
+$changeType = $Event.SourceEventArgs.ChangeType 
+$timeStamp = $Event.TimeGenerated 
+$filepath = $Event.SourceEventArgs.FullPath
+Write-Host "The file '$filename' was $changeType at $timeStamp" -fore green
+pushto365 $filepath $filename
+} 
+ 
+Register-ObjectEvent $fsw Deleted -SourceIdentifier FileDeleted -Action { 
+$filename = $Event.SourceEventArgs.Name 
+$changeType = $Event.SourceEventArgs.ChangeType 
+$timeStamp = $Event.TimeGenerated
+$filepath = $Event.SourceEventArgs.FullPath
+Write-Host "The file '$filename' was $changeType at $timeStamp" -fore green
+} 
+ 
+Register-ObjectEvent $fsw Changed -SourceIdentifier FileChanged -Action { 
+$filename = $Event.SourceEventArgs.Name 
+$changeType = $Event.SourceEventArgs.ChangeType 
+$timeStamp = $Event.TimeGenerated 
+Write-Host "The file '$filename' was $changeType at $timeStamp" -fore green 
+$filepath = $Event.SourceEventArgs.FullPath
+pushto365 $filepath $filename
+} 
+
+}
+
+Function unwatch (){
+# To stop the monitoring, run the following commands: 
+Unregister-Event FileDeleted 
+Unregister-Event FileCreated 
+Unregister-Event FileChanged
+}
+
+init
+
+
+

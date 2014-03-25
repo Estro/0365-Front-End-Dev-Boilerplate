@@ -1,0 +1,23 @@
+.main-nav {
+	li {
+		margin: 5px 0;
+
+		a {
+			padding: 10px 15px;
+			background-color: darken($light-gray,10%);
+			color: $text;
+			display: block;
+			@include font-size(14);
+
+			&.active {
+				background-color: $accent;
+				color: #FFF;
+			}
+
+			&:hover, &:focus {
+				background-color: $sub-accent;
+				color: #FFF;
+			}
+		}
+	}
+}
